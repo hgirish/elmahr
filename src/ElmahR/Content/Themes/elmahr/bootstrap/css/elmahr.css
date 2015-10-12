@@ -1,0 +1,613 @@
+body
+{
+    background-color: #727D1A;
+    color: #222;
+    line-height: 1.4em;
+}
+
+h2
+{
+    color: #222;
+    text-transform: uppercase;
+}
+
+p, li
+{
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+    p.intro
+    {
+        min-height: 8em;
+    }
+
+a, a:hover, a:active
+{
+    color: Black;
+    text-decoration: none;
+}
+
+.navbar a:link, .navbar a:visited
+{
+    color: #999;
+    text-decoration: none;
+}
+
+.navbar a:hover
+{
+    color: #fff;
+}
+
+ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left
+{
+    float: left;
+}
+
+.right
+{
+    float: right;
+}
+
+a.show
+{
+    background: transparent url(../../../../Images/glyphicons_051_eye_open.png);
+    display: inline-block;
+    height: 24px;
+    width: 32px;
+}
+
+a.hide
+{
+    background: transparent url(../../../../Images/glyphicons_052_eye_close.png);
+    display: inline-block;
+    height: 24px;
+    width: 32px;
+}
+
+a.play
+{
+    background: transparent url(../../../../Images/glyphicons_173_play.png);
+    display: inline-block;
+    height: 24px;
+    width: 18px;
+}
+
+a.pause
+{
+    background: transparent url(../../../../Images/glyphicons_174_pause.png);
+    display: inline-block;
+    height: 24px;
+    width: 18px;
+}
+
+a.bin
+{
+    background: transparent url(../../../../Images/glyphicons_016_bin.png);
+    display: inline-block;
+    height: 24px;
+    width: 20px;
+}
+
+a.chart
+{
+    background: transparent url(../../../../Images/glyphicons_041_charts.png);
+    display: inline-block;
+    height: 24px;
+    width: 27px;
+}
+
+a.loading
+{
+    background: transparent url(../../../../Images/loading-small.gif);
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
+a.testError
+{
+    background: transparent url(../../../../Images/glyphicons_290_skull.png);
+    display: inline-block;
+    height: 24px;
+    width: 22px;
+}
+
+.pad
+{
+    padding: 1em;
+}
+
+/* = Applications section --------- */
+.boxAppsAll
+{
+    background-color: #F8FBDD;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+    .boxAppsAll p
+    {
+        font-weight: bold;
+    }
+
+        .boxAppsAll p span.right
+        {
+            display: block;
+            font-size: 4em;
+            font-weight: normal;
+            padding-top: 10px;
+            text-align: right;
+            width: 30%;
+        }
+/* ------------------ */
+
+.boxApp
+{
+    background-color: #FF6;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+    .boxApp table
+    {
+        width: 100%;
+    }
+
+        .boxApp table td
+        {
+            padding-bottom: 3px;
+        }
+
+    .boxApp ul .title
+    {
+        font-size: 1.5em;
+        font-variant: small-caps;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    .boxApp .tblApp .txt
+    {
+        width: 60%;
+    }
+
+    .boxApp .total
+    {
+        font-family: Arial;
+        font-size: 6em;
+        font-style: italic;
+        font-weight: bold;
+        line-height: 1em;
+        text-align: right;
+        width: 40%;
+    }
+
+    .boxApp .total span
+    {
+        display: block;
+    }
+
+    .boxApp .icons
+    {
+        border-top: 1px dotted #727d1a;
+        height: 30px;
+        padding: 0;
+    }
+
+        .boxApp .icons a
+        {
+            margin-right: 5px;
+        }
+
+    .boxApp .icons-right
+    {
+        text-align: right;
+    }
+
+        .boxApp .icons-right img
+        {
+            vertical-align: top;
+        }
+
+        .boxApp .icons-right a
+        {
+            font-size: 22px;
+            font-style: oblique;
+            font-weight: bold;
+            margin-right: -2px;
+        }
+
+
+.boxColor0
+{
+    background-color: #f1fab1;
+    cursor: move;
+}
+
+.boxColor1
+{
+    background-color: #edfa96;
+    cursor: move;
+}
+
+.boxColor2
+{
+    background-color: #e7fa67;
+    cursor: move;
+}
+
+.boxColorElmahR
+{
+    background-color: #EE98E6;
+    cursor: move;
+}
+
+.grayed
+{
+    background-color: #ddd;
+}
+
+.draggable
+{
+    cursor: move;
+}
+
+.boxAppInfo
+{
+    background-color: #F8FBDD;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 1em;
+    margin-top: -16px;
+    width: 100%;
+}
+
+    .boxAppInfo .pad
+    {
+        padding-left: 2em;
+    }
+
+    .boxAppInfo .errorMsg
+    {
+        border-bottom: 1px dotted #C4DE56;
+        font-size: smaller;
+        padding: .5em 0;
+    }
+
+    .boxAppInfo .msgLink
+    {
+        font-size: 1.2em;
+        padding-bottom: .5em;
+        padding-top: 0.8em;
+    }
+
+    .boxAppInfo .errorMsg .right
+    {
+        clear: right;
+        text-align: center;
+        width: 32px;
+    }
+
+/* = All Errors Feed section ----------------------- */
+.boxAllErrorsFeed
+{
+    background-color: #F8FBDD;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+
+    .boxAllErrorsFeed .errorMsg
+    {
+        border-bottom: 1px dotted #C4DE56;
+        font-size: smaller;
+        padding: .5em 0;
+    }
+
+        .boxAllErrorsFeed .errorMsg .title
+        {
+            font-size: 1.5em;
+            font-variant: small-caps;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .boxAllErrorsFeed .errorMsg .right
+        {
+            clear: right;
+            line-height: 1.9em;
+            text-align: center;
+            width: 32px;
+        }
+
+    .boxAllErrorsFeed .msgLink
+    {
+        font-size: 1.2em;
+        margin: .5em 0;
+    }
+
+.msgLink a:link, .msgLink a:visited
+{
+    color: #727d1a;
+}
+
+.msgLink a:hover, .msgLink a:active
+{
+    color: #444;
+}
+
+a.ysod
+{
+    background-color: yellow;
+    color: red;
+}
+
+.log
+{
+    background-color: black;
+    border: 1px #888;
+    color: white;
+    height: 250px;
+    margin: 0 0 1em 0;
+    overflow: auto;
+    padding: 5px 10px;
+}
+
+pre span.Info
+{
+}
+
+pre span.Warning
+{
+    color: yellow;
+}
+
+pre span.Critical
+{
+    color: orange;
+}
+
+/* = Details Popup ---------*/
+
+#details pre
+{
+    border: 1px dashed #888;
+    margin: 0 0 1em 0;
+    overflow: auto;
+    padding: 5px 10px;
+}
+
+#details h3
+{
+    color: #727d1a;
+    font-weight: normal;
+    margin-top: 1.5em;
+    padding-left: 2px;
+    text-transform: uppercase;
+}
+
+#details table
+{
+    font-size: 1em;
+    width: 100%;
+}
+
+    #details table thead
+    {
+        background-color: #E6F18D;
+        font-weight: bold;
+    }
+
+    #details table td
+    {
+        font-size: .8em;
+        padding: .5em;
+        vertical-align: top;
+    }
+
+/* = Error types section, Errors Graph section --------------- */
+.boxErrorsTypes, .boxErrorsGraph, .boxRememberMe
+{
+    background-color: #C4DE56;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+    .boxErrorsTypes h2, .boxErrorsGraph h2
+    {
+        color: #666633;
+    }
+
+    .boxErrorsTypes .icon
+    {
+        height: 30px;
+        width: 35px;
+    }
+
+    .boxErrorsTypes td.value
+    {
+        font-size: 1.4em;
+        font-weight: bold;
+        padding-right: 0.5em;
+        text-align: right;
+    }
+
+    .boxRememberMe h3
+    {
+        text-align: right;
+    }
+
+#askForMoreErrors
+{
+    margin-top: 20px;
+    text-align: right;
+}
+
+#noMoreErrors
+{
+    margin-top: 20px;
+}
+
+#errorsTotalCount
+{
+    text-align: center;
+    width: 100%;
+}
+
+#errorsResume
+{
+    border: 1px dotted;
+    width: 100%;
+}
+
+    #errorsResume .doubleHeader
+    {
+        text-align: center;
+        width: 80px;
+    }
+
+    #errorsResume td.right
+    {
+        text-align: right;
+    }
+
+#confirmationQuestionOnDelete h3, #confirmationQuestionOnDelete h4
+{
+    text-align: center;
+}
+
+#deletionDisabled
+{
+    color: red;
+}
+
+
+/* Footer
+-------------------------------------------------- */
+.footer
+{
+    border-top: 1px dotted #C4DE56;
+    margin-top: 45px;
+    padding: 15px 0 16px;
+}
+
+    .footer p
+    {
+        color: #222;
+        margin-bottom: 0;
+    }
+
+    .footer a, .footer a:link, .footer a:visited
+    {
+        color: #C4DE56;
+    }
+
+        .footer a:hover, .footer a:active
+        {
+            color: #efefef;
+        }
+
+#loading
+{
+    background-color: #F60;
+    color: #DDD;
+    display: block;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+#messages
+{
+    background-color: #F08;
+    color: #DDD;
+    display: none;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+}
+
+
+@media (max-width: 480px)
+{
+    .boxApp .total
+    {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px)
+{
+    .boxApp .total
+    {
+        font-size: 5em;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .intro
+    {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 980px)
+{
+    .boxApp .total
+    {
+        font-size: 4em;
+    }
+}
+
+@media (min-width: 980px) and (max-width: 1210px)
+{
+    .boxApp .total
+    {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: 1210px)
+{
+    .boxApp .total
+    {
+        font-size: 6em;
+    }
+}

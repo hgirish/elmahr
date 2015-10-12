@@ -1,0 +1,5 @@
+<configuration>
+  <connectionStrings>
+    <add name="MongoDB" connectionString="mongodb://localhost:27017/?safe=true" />
+  </connectionStrings>
+</configuration>

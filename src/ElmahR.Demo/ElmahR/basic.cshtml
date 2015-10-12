@@ -1,0 +1,25 @@
+﻿@using ElmahR.Core.Modules
+@using V = ElmahR.Core.Extensions.Version
+@{
+    var version = V.GetCurrent();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ElmahR Dashboard (@version)</title>
+    <style>
+        body {
+            font-family: monospace
+        }
+    </style>
+    @Bootstrapper.RenderBundles(Href("~/Content/Images/"), null, name => name.IndexOf("Dashboard_Module", StringComparison.OrdinalIgnoreCase) == -1)
+</head>
+    <body>
+        <h1>ElmahR = ELMAH + SignalR</h1>
+        <div id="messageslog"></div>
+    </body>
+</html>

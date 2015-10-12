@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ElmahR.Persistence.EntityFramework.SqlServerCompact</id>
+    <version>1.0.0</version>
+    <title>ElmahR.Persistence.EntityFramework.SqlServerCompact</title>
+    <authors>Wasp</authors>
+    <owners>Wasp</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://bitbucket.org/wasp/elmahr</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Elmah.Persistence.EntityFramework.SqlServerCompact module, to handle dependencies and configuration in order to use a local SqlServerCompact database (.sdf).</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright 2012-13 Roberto Vespa</copyright>
+    <tags>ElmahR ELMAH SignalR error logging unhandled exception persistence EntityFramework SqlServerCompact</tags>  
+    <dependencies>
+      <dependency id="EntityFramework.SqlServerCompact" />
+      <dependency id="Microsoft.SqlServer.Compact" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nuget_content\web.config.transform" target="content" />
+    <file src="nuget_content\readme.txt" target="." />
+    <file src="nuget_content\readme.txt" target="App_Readme\ElmahR.Persistence.EntityFramework.SqlServerCompact.txt" />
+    <file src="nuget_content\ElmahR.sdf" target="Content\App_Data\ElmahR.sdf" />
+  </files>
+</package>

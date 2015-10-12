@@ -1,0 +1,22 @@
+﻿<!-- Appharbor -->
+<div class="boxAppInfo" style="display: none" data-bind="attr: { id: elmahr.config.appBoxIdPrefix + 'BuildInfos' + index }">
+    <div class="pad">
+        <ul data-bind="template: { foreach: buildInfos, afterAdd: elmahr.onNewError }">
+            <li class="errorMsg">
+                <ul>
+                    <li class="right">
+                        <strong>
+                            <abbr class="timeagoShort" data-bind="attr: { title: isoTime }, text: time">
+                            </abbr>
+                        </strong>
+                    </li>
+                    <li>
+                        Build: <strong><span data-bind="text: status, attr: { 'class': status, 'className': status }"></span></strong>
+                    </li>
+                    <li><strong><span data-bind="text: message"></span></strong></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Appharbor -->

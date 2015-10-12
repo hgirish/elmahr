@@ -1,0 +1,27 @@
+syntax: glob
+bin/**
+*.user
+*.cache
+*.suo
+*.docstates
+src/**/*.Publish.xml
+obj/**
+_ReSharper.*
+*.orig
+dist/**
+*.sdf
+deploy/**
+src/Deploy/**
+test/**
+src/packages/**
+src/SqlServerCompact.4.0.8482.1/**
+src/ElmahR/_bin_deployableAssemblies/**
+src/ElmahR.Demo/_bin_deployableAssemblies/**
+src/ElmahR.SampleSource.MVC/_bin_deployableAssemblies/**
+*.nupkg
+Thumbs.db
+src/testbuild.cmd
+src/nuget_pack.cmd
+src/nuget_pack_prod.cmd
+testseq.txt
+src/ElmahR/Scripts/ElmahR/.idea/**

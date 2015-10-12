@@ -1,0 +1,5 @@
+<configuration>
+  <connectionStrings>
+    <add name="ErrorLogContext" connectionString="Server=.\SQLEXPRESS;Initial Catalog=ElmahR;Integrated Security=true" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+</configuration>

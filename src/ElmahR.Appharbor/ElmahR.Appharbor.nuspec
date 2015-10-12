@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://bitbucket.org/wasp/elmahr</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>1.0.0 Final Release</releaseNotes>
+    <copyright>Copyright 2012-13 Roberto Vespa</copyright>
+    <tags>ElmahR ELMAH SignalR Appharbor</tags>
+  </metadata>
+  <files>
+    <file src="nuget_content\web.config.transform" target="content" />
+    <file src="nuget_content\readme.txt" target="." />
+    <file src="nuget_content\readme.txt" target="App_Readme\ElmahR.Appharbor.Readme.txt" />
+  </files>
+</package>

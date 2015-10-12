@@ -1,0 +1,49 @@
+﻿<script type='text/javascript'>
+
+    var elmahrAppharborConnector = $.hubConnection().createHubProxy('elmahrAppharbor');
+
+    elmahrAppharborConnector.on('notifyBuildInfo', function (i) {
+        var apps = elmahr.data.advertisedApplications();
+        for (var a in apps) {
+            var id = apps[a].sourceId;
+            if (id == i.Application.Id) {
+                elmahr.data.advertisedApplications()[a].addBuildInfo(i);
+            }
+        }
+    });
+
+    elmahrAppharborConnector.connection.start();
+
+    (function () {
+
+        elmahr.plugins.appharbor = function (elmahrConnector, applicationViewModel, properties) {
+
+            applicationViewModel.hasBuildInfo = properties.appharborId;
+            applicationViewModel.buildInfos = ko.observableArray([]);
+            applicationViewModel.buildInfosCount = ko.observable(0);
+
+            applicationViewModel.addBuildInfo = function (i, append) {
+                var model = {
+                    'time': i.Time.trimMillisecondsFromIsoDate().toLocaleString(),
+                    'isoTime': i.IsoTime,
+                    'status': i.Build.Status,
+                    'message': i.Build.Commit.Message
+                };
+
+                if (append)
+                    applicationViewModel.buildInfos.push(model);
+                else
+                    applicationViewModel.buildInfos.unshift(model);
+
+                applicationViewModel.buildInfosCount(applicationViewModel.buildInfosCount() + 1);
+            };
+
+            applicationViewModel.toggleBuildInfos = function () {
+                $('#' + elmahr.config.appBoxIdPrefix + 'BuildInfos' + applicationViewModel.index).toggle('fast');
+            };
+
+        };
+
+    }());
+    
+</script>

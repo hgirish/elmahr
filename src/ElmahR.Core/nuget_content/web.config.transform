@@ -1,0 +1,70 @@
+<configuration>
+  <configSections>
+    <section name="elmahr" type="ElmahR.Core.Config.SectionHandler, ElmahR.Core" />
+  </configSections>
+  <elmahr>
+    <!--
+    This section lists a sample application entry. You will want to list 
+    real monitored applications here, and the 'sourceId' attributes should 
+    match the corresponding 'sourceId' attributes from the source apps:
+    -->
+    <application name="Sample application" 
+                 sourceId="SomeCode" 
+                 infoUrl="http://localhost:12345/elmah.axd" 
+                 testExceptionUrl="http://localhost:12345/elmah.axd/test" />
+                 
+    <!--
+    The following commented entry would map an application entry to the dashboard itself, 
+    in case you want to broadcast errors coming from there. You will need
+    to activate the ErrorTrapModule listed elsewhere in this file in the appropriate
+    modules sections. If you do want to receive errors from the dashboard simply uncomment
+    the following line.
+    -->
+    <!--<application name="Myself" sourceId="###ElmahR###" boxClass="boxColorElmahR" />-->
+    
+    <!--
+    Please refer to https://bitbucket.org/wasp/elmahr/wiki/Setup for a complete
+    list of the available configuration options
+    -->
+  </elmahr>
+  <appSettings>
+    <!--
+    The following settings are required in the context
+    of Razor websites, you could remove them if this is
+    not the case. It is also possible that this could 
+    appear more than once, Nuget does not support official
+    config file transforms therefore updating existing
+    keys is not possible; if this is the case you should
+    clean them up yourself.
+    -->
+    <add key="webpages:Version" value="2.0.0.0" />
+    <add key="webpages:Enabled" value="true"  />
+  </appSettings>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules runAllManagedModulesForAllRequests="true">
+        <!--
+        You may want to enable the following declaration in order 
+        to have your dashboard collecting errors happening inside 
+        the dashboard itself (ELMAH is needed and must be properly 
+        configured).
+        -->
+      <!--<add name="ErrorPost" type="ElmahR.Core.ErrorTrapModule, ElmahR.Core" />-->
+    </modules>
+    <handlers>
+      <add name="PostError" verb="POST"     path="PostError.axd"           type="ElmahR.Core.PostError, ElmahR.Core" />
+      <add name="YSOD"      verb="GET,HEAD" path="YellowScreenOfDeath.axd" type="ElmahR.Core.YellowScreenOfDeath, ElmahR.Core" />
+    </handlers>
+  </system.webServer>
+  <system.web>
+    <httpModules>
+        <!--
+        The configuration samples are targeting the integrated
+        pipeline (system.webServer), but you can easily convert
+        them (if you have to...) to use the classic pipeline, 
+        moving modules and handlers here, and adapting the syntax 
+        accordingly, documentation is easily available on the web.
+        -->
+    </httpModules>
+  </system.web>
+</configuration>

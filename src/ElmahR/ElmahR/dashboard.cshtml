@@ -1,0 +1,468 @@
+﻿@using ElmahR.Core
+@using ElmahR.Core.Extensions
+@using ElmahR.Core.Modules
+@using V = ElmahR.Core.Extensions.Version
+@using System.Configuration
+@{
+    var version = V.GetCurrent();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ElmahR Dashboard (@version)</title>
+    
+    @Bootstrapper.RenderBundles(Href("~/Content/Images/"), 
+        string.Format("ElmahR Dashboard ({0})", version))
+
+    @{
+        if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["GoogleAnalyticsId"]))
+        {
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '@ConfigurationManager.AppSettings["GoogleAnalyticsId"]']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>       
+        }   
+    }
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+    <div id="messages">
+        Errors...
+    </div>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <div id="loading">
+                    Loading...
+                </div>
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </a><a class="brand" href="/">ElmahR (@version)</a>
+                <div class="nav-collapse" style="position: relative">
+                    <ul class="nav">
+                        @if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["GenerateErrors"]))
+                        {
+                            <li><a target="_blank" href="@ConfigurationManager.AppSettings["GenerateErrors"]">Generate errors</a></li>
+                        }
+                        <li><a target="_blank" id="toggleDescriptiveText" href="#">Toggle descriptive text</a></li>
+                        <li><a target="_blank" href="https://bitbucket.org/wasp/elmahr">Repo</a></li>
+                        <li><a target="_blank" href="http://nuget.org/packages?q=elmahr">Nuget packages</a></li>
+                        <li><a target="_blank" href="http://channel9.msdn.com/Events/aspConf/aspConf/ElmahR-ELMAH-SignalR">Ch9 Video</a></li>
+                        <li><a target="_blank" href="http://www.robychechi.it/roby/Tags/elmahr">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapContent">
+            <div class="intro">
+                <h1 style="text-align: left">ElmahR = ELMAH + SignalR
+                </h1>
+                <p class="subtitle">
+                    Real-time error monitoring, made easy
+                </p>
+            </div>
+            <div class="row" id="wait">
+                <div class="span12" style="text-align: center">
+                    <img src='@Href("~/Content/Images/loading.gif")' alt="loading" />
+                </div>
+            </div>
+            <div class="row" id="logPad" style="display: none">
+                @if (Request.QueryString["log"].IsTruthy())
+                {
+                    <div class="span12">
+                        <div class="boxApp">
+                            <div class="pad">
+                                <h3>Here you have it, low-level logging about ElmahR internals!
+                                </h3>
+                                <pre id="log" class='pre-scrollable log'></pre>
+                                <a href="#" id="logBin" class="bin" title="Clear log"></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="span12">
+                        <div class="boxApp">
+                            <div class="pad">
+                                <h3>Do you need more low-level logging about what ElmahR is doing? <a href='@Href("~/?log=1")'>Click here!</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row" id="dashboard" style="display: none">
+                <div class="span4">
+                    <h2>Applications</h2>
+                    <p class="intro">
+                        ElmahR aggregates all errors coming out from the configured applications. Here below
+                you can see one box for each application, and a general box with the total number
+                of received errors.
+                    </p>
+                    <div class="boxApp">
+                        <div class="pad">
+                            <ul>
+                                <li class="right total"><span data-bind="text: total, updateTotal: total"></span>
+                                </li>
+                                <li class="title"><strong><span>All</span></strong> </li>
+                                <li data-bind="with: latest">Latest: <a href="#" title="Click for error details"
+                                    class="opener" data-bind="event: { click: popup }"><span data-bind="text: shortType"></span></a></li>
+                                <li data-bind="with: latest">When: <strong>
+                                    <abbr class="timeagoShort" data-bind="attr: { title: isoTime }, text: time, applyTimeAgo: isoTime">
+                                    </abbr>
+                                </strong></li>
+                                <li data-bind="with: latest">App: <strong><span data-bind="text: applicationName"></span>
+                                </strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div data-bind="foreach: advertisedApplications" id="applicationBoxes">
+                        <div data-bind="attr: { 'class': 'boxApp ' + boxClass(), 'className': 'boxApp ' + boxClass(), 'data-sourceId': 'app_' + sourceId }">
+                            <div class="pad">
+                                <table>
+                                    <tr>
+                                        <td colspan="2">
+                                            <ul>
+                                                <li class="right total"><span data-bind="text: errorsCount, updateTotal: errorsCount"></span></li>
+                                                <li class="title"><a target="_blank" data-bind="attr: { href: infoUrl, title: 'Info' }, text: applicationName"></a></li>
+                                                <li data-bind="with: lastError">Latest: <a href="#" title="Click for Details" data-bind="event: { click: popup }"
+                                                    class="opener"><span data-bind="text: shortType"></span></a></li>
+                                                <li data-bind="with: lastError">When: <strong>
+                                                    <abbr class="timeagoShort" data-bind="attr: { title: isoTime }, text: time, applyTimeAgo: isoTime">
+                                                    </abbr>
+                                                </strong></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="icons">
+                                            <a href="#" data-bind="event: { click: toggleApplication }, attr: { 'class': applicationClass, 'className': applicationClass, 'title': titlePlayPause  }" />
+                                            <a href="#" data-bind="event: { click: toggleApplicationErrors }" class="show" title="Show/hide errors" />
+                                            <a href="#" data-bind="event: { click: getErrorsResume }" class="chart" title="Show/hide error stats" />
+                                            <a href="#" data-bind="event: { click: raiseTestException }, visible: hasTestExceptionUrl"
+                                                class="testError" title="Raise test error on source" />
+                                        </td>
+                                        <td class="icons-right" id="app-commands"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="app-renderers">
+                            </div>
+                            <div class="boxAppInfo" style="display: none" data-bind="attr: { id: elmahr.config.appBoxIdPrefix + index }">
+                                <div class="pad">
+                                    <ul data-bind="template: { foreach: errors, afterAdd: elmahr.onNewError }">
+                                        <li data-bind="css: { onReconnect: reconnectClass }" class="errorMsg">
+                                            <ul>
+                                                <li class="right"><strong>
+                                                    <abbr class="timeagoShort" data-bind="attr: { title: isoTime }, text: time, applyTimeAgo: isoTime">
+                                                    </abbr>
+                                                </strong></li>
+                                                <li class="right">
+                                                    <img data-bind="attr: { src: browserSupportUrl, alt: browserSupportUrl }" /></li>
+                                                <li>Type: <strong><span data-bind="attr: { style: 'color:red' }, text: shortType"></span>
+                                                </strong></li>
+                                                <li><strong><span data-bind="text: user"></span></strong></li>
+                                                <li class="msgLink"><a href="#" title="Click for Details" data-bind="event: { click: popup }"
+                                                    class="opener"><strong data-bind="text: message"></strong></a></li>
+                                                <li>Host: <strong><span data-bind="text: host"></span></strong></li>
+                                                <!-- ko if: statusCode -->
+                                                <li>Code: <span data-bind="text: statusCode"></span></li>
+                                                <!-- /ko -->
+                                                <!-- ko if: hasYsod -->
+                                                <li><a data-bind="attr: { href: url }" target="_blank" title="Show the Yellow Screen of Death for this error"
+                                                    class="ysod">* Yellow screen of death *</a></li>
+                                                <!-- /ko -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <h2>Errors
+                    </h2>
+                    <p class="intro">
+                        Errors get to the dashboard in real time as they occur in monitored applications,
+                and here below you have a 'feed' displaying all of them, the newest ones on top
+                of the stack.
+                    </p>
+                    <div id="allErrors" class="boxAllErrorsFeed">
+                        <div class="pad">
+                            <div data-bind="template: { foreach: allErrors, afterAdd: elmahr.onNewError }">
+                                <div data-bind="css: { onReconnect: reconnectClass }" class="errorMsg">
+                                    <ul>
+                                        <li class="right"><strong>
+                                            <abbr class="timeagoShort" data-bind="attr: { title: isoTime }, text: time, applyTimeAgo: isoTime">
+                                            </abbr>
+                                        </strong></li>
+                                        <li class="right">
+                                            <img data-bind="attr: { src: browserSupportUrl, alt: browserSupportUrl }" /></li>
+                                        <li class="title"><a target="_blank" data-bind="attr: { href: infoUrl }, text: applicationName"></a></li>
+                                        <li>Type: <strong><span data-bind="attr: { style: 'color:red' }, text: shortType"></span>
+                                        </strong></li>
+                                        <li class="msgLink"><a href="#" title="Click for Details" data-bind="event: { click: popup }"
+                                            class="opener"><strong data-bind="text: message"></strong></a></li>
+                                        <li>Host: <strong><span data-bind="text: host"></span></strong></li>
+                                        <!-- ko if: statusCode -->
+                                        <li>Code: <span data-bind="text: statusCode"></span></li>
+                                        <!-- /ko -->
+                                        <!-- ko if: user -->
+                                        <li>User: <strong><span data-bind="text: user"></span></strong></li>
+                                        <!-- /ko -->
+                                        <!-- ko if: hasYsod -->
+                                        <li><a data-bind="attr: { href: url }" target="_blank" title="Show the Yellow Screen of Death for this error"
+                                            class="ysod">* Yellow screen of death *</a></li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- ko if: latest -->
+                            <p id="askForMoreErrors">
+                                <a href="#" data-bind="event: { click: elmahr.askForMoreErrors }">Hey, check if there
+                            is more...</a>
+                            </p>
+                            <p id="noMoreErrors" style="display: none">
+                                You reached the end of the stream!
+                            </p>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <h2>Extras</h2>
+                    <p class="intro">
+                        ElmahR allows the addition of 'extra' modules, which are the way to enrich the dashboards
+                with additional pieces like statistics or graphs about received errors.
+                    </p>
+                    <div class="boxRememberMe">
+                        <div class="pad">
+                            <h2>Remember me?</h2>
+                            <h3>Yes please!
+                        <input type="checkbox" id="rememberMe" />
+                            </h3>
+                            <hr style="border: 1px dotted #727d1a" />
+                            <p>
+                                <strong><a href="#" id="openRememberMeInfo">What's this?</a> </strong>
+                            </p>
+                            <p id="rememberMeInfo" style="display: none">
+                                If you want your preferences to be stored and retrieved at each reconnection, please
+                        select this option. Remember, this is a demo site only, this functionality is very
+                        basic and it works with cookies enabled only.<br />
+                                <strong>No personal info are transferred</strong>, just a randomly generated key.
+                        You will be remembered for 7 days by each browser you will try to use. So far the
+                        preferences are <strong>the status of the application sources</strong> (active or
+                        paused), and <strong>the order of application boxes</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="boxErrorsTypes">
+                        <div class="pad">
+                            <h2>Error types</h2>
+                            <table id="errorTypes" data-bind="foreach: stats" style="width: 100%">
+                                <tr>
+                                    <td class="icon">
+                                        <a href="#" alt="show" data-bind="event: { click: toggleErrorType }, attr: { 'class': errorClass, 'className': errorClass, 'title': titlePlayPause }" />
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: key"></span>
+                                    </td>
+                                    <td class="value">
+                                        <span data-bind="text: value"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="app-extras">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="errorsStats" title="Error statistics" data-bind="with: selectedApp" style="display: none">
+            <div id="loadingStats">
+                <h3>Loading...</h3>
+            </div>
+            <div id="statsLoaded" style="display: none">
+                <div data-bind="ifnot: errorsStatsCount">
+                    <h3>No errors</h3>
+                    <p>The <strong data-bind="text: applicationName"></strong> feed does not contain errors, not even in a remote past.</p>
+                </div>
+                <div data-bind="if: errorsStatsCount">
+                    <h3>We have errors</h3>
+                    <p>
+                        Here you have a quick resume about errors grouped by a few time ranges (last day with errors, last week with errors, last month with errors), which allow you
+                to easily delete entire blocks of errors by just clicking the corresponding trash bin.
+                    </p>
+                    <p>The <strong data-bind="text: applicationName"></strong> feed contains</p>
+                    <div id="errorsTotalCount">
+                        <h4><span data-bind="text: errorsStatsCount() + ' errors'"></span>&nbsp;
+                    <a href="#" class="bin" data-bind="event: { click: askToClearAllErrors }" title="Delete them!"></a></h4>
+                    </div>
+                    <br />
+                    <p>
+                        and the latest day with errors happened <strong>
+                            <abbr class="timeago" data-bind="attr: { title: errorsStatsDate }, text: errorsStatsDate, applyTimeAgo: errorsStatsDate"></abbr>
+                        </strong>&nbsp;
+                (<strong data-bind="text: errorsStatsFormattedDate"></strong>).
+                    </p>
+                    <table id="errorsResume">
+                        <thead>
+                            <tr>
+                                <td>When</td>
+                                <td>Offset</td>
+                                <td colspan='2' class="doubleHeader">Errors before that day</td>
+                                <td colspan='2' class="doubleHeader">Errors that day or after</td>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { foreach: errorsStats }">
+                            <tr>
+                                <td><strong>
+                                    <abbr class="timeago" data-bind="attr: { title: when }, text: when"></abbr>
+                                </strong></td>
+                                <td data-bind="text: offset"></td>
+                                <td class="right">
+                                    <h4 data-bind="text: countBefore"></h4>
+                                </td>
+                                <td><a href="#" data-bind="event: { click: clearErrorsBefore }" class="bin" title="Delete them!" /></td>
+                                <td class="right">
+                                    <h4 data-bind="text: countAfter"></h4>
+                                </td>
+                                <td><a href="#" data-bind="event: { click: clearErrorsAfter }" class="bin" title="Delete them!" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <div id='confirmationQuestionOnDelete' data-bind="with: deletor">
+                        <h4>Are you sure you want to delete all those errors</h4>
+                        <h3>
+                            <a href="#" data-bind="event: { click: action }" title="Yes!">Yes</a> / <a href="#" data-bind="event: { click: $parent.cancelDeletor }" title="No!">No</a>
+                        </h3>
+                    </div>
+
+                    @if (!Hub.CanDelete)
+                    {
+                        <div>
+                            <p id="deletionDisabled">
+                                Errors removal is not enabled, please check configuration.
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="details" title="Error details" data-bind="with: selected" style="display: none">
+            <p>
+                <strong><span data-bind="attr: { style: 'color:red' }, text: type"></span></strong>
+                has occurred <strong>
+                    <abbr class="timeago" data-bind="attr: { title: isoTime }, text: time">
+                    </abbr>
+                </strong>on host <strong><span data-bind="text: host"></span></strong>&nbsp;for
+        user&nbsp;<strong> <span data-bind="text: user"></span></strong>:
+            </p>
+            <p>
+                Message: <strong data-bind="text: message"></strong>
+            </p>
+            <!-- ko if: statusCode -->
+            <p>
+                Code: <strong data-bind="text: statusCode"></strong>
+            </p>
+            <!-- /ko -->
+            <p>
+                Source: <strong data-bind="text: source"></strong>
+            </p>
+            <pre class="pre-scrollable" data-bind="text: detail"></pre>
+            <h3>Server variables</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name
+                        </td>
+                        <td>Value
+                        </td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: serverVariables">
+                    <tr>
+                        <td>
+                            <span data-bind='text: key'></span>
+                        </td>
+                        <td>
+                            <span data-bind='text: value'></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Form</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name
+                        </td>
+                        <td>Value
+                        </td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: form">
+                    <tr>
+                        <td>
+                            <span data-bind='text: key'></span>
+                        </td>
+                        <td>
+                            <span data-bind='text: value'></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Cookies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name
+                        </td>
+                        <td>Value
+                        </td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: cookies">
+                    <tr>
+                        <td>
+                            <span data-bind='text: key'></span>
+                        </td>
+                        <td>
+                            <span data-bind='text: value'></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">
+            <p class="pull-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>
+                Copyright (c) 2012-13 - <a target="_blank" href="https://bitbucket.org/wasp/elmahr">ElmahR</a>
+                - <a target="_blank" href="http://www.robychechi.it/roby/Tags/elmahr">wasp.net</a>
+            </p>
+        </footer>
+    </div>
+    <script src='@Href("~/Scripts/respond.min.js")'></script>
+</body>
+</html>

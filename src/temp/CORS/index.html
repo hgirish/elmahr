@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="scripts/jquery-1.10.2.js"></script>
+    <script src="scripts/jquery-migrate-1.0.0.js"></script>
+    <script src="scripts/jquery.signalR-1.1.3.js"></script>
+
+    <script src="scripts/elmahr.core.js"></script>
+    <script>
+
+        $(function () {
+            elmahr.config.root        =                             'http://localhost:37345/';
+            elmahr.config.signalrRoot = elmahr.config.root +        'signalr113/';
+            $.connection.hub.url      = elmahr.config.signalrRoot + 'signalr';
+
+            elmahr.registerBuilder(function (elmahrConnector, data) {
+                return {
+                    callbacks: {
+                        notifyErrors:
+                        {
+                            replacer: function(envelopes, append, startupErrors) {
+                                for (var k = 0; k < envelopes.length; k++) {
+                                    var envelope = envelopes[k],
+                                        s = '%2: CORS Error from application %0 (%1):\r\n%3'.format(
+                                            envelope.ApplicationName,
+                                            envelope.SourceId,
+                                            envelope.Error.Time.trimMillisecondsFromIsoDate().format("%d-%n-%y %H:%M:%S"),
+                                            envelope.Error.Message);
+
+                                    elmahr.onLog(s);
+                                }
+                            }
+                        }
+                    }
+                };
+            });
+
+            elmahr.init();
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://bitbucket.org/wasp/elmahr</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>MongoDB persistor implementation</releaseNotes>
+    <copyright>Copyright 2012-13 Roberto Vespa</copyright>
+    <tags>ElmahR ELMAH SignalR error logging unhandled exception persistence MongoDB</tags>  
+    <dependencies>
+      <group>
+        <dependency id="ElmahR.Core" />
+      </group>
+    </dependencies>  
+  </metadata>
+  <files>
+    <file src="nuget_content\readme.txt" target="." />
+    <file src="nuget_content\readme.txt" target="App_Readme\ElmahR.Persistence.MongoDB.Readme.txt" />
+    <file src="nuget_content\web.config.transform" target="content" />
+  </files>
+</package>

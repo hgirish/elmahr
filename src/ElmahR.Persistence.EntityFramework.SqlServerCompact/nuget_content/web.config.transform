@@ -1,0 +1,5 @@
+<configuration>
+  <connectionStrings>
+    <add name="ErrorLogContext" connectionString="Data Source=|DataDirectory|ElmahR.sdf" providerName="System.Data.SqlServerCE.4.0" />
+  </connectionStrings>
+</configuration>

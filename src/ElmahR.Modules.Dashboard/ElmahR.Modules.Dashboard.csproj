@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E30451F2-BC59-469A-A405-0DB982C96A92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElmahR.Modules.Dashboard</RootNamespace>
+    <AssemblyName>ElmahR.Modules.Dashboard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Modules\Bootstrapper.cs" />
+    <Compile Include="Modules\Dashboard\Module.cs" />
+    <Compile Include="Modules\Dashboard\Stats\Module.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElmahR.Core\ElmahR.Core.csproj">
+      <Project>{369E787C-1764-4DC5-9CD4-07BCC2132020}</Project>
+      <Name>ElmahR.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\compatible_chrome.gif" />
+    <Content Include="Content\Images\compatible_firefox.gif" />
+    <Content Include="Content\Images\compatible_ie.gif" />
+    <Content Include="Content\Images\compatible_opera.gif" />
+    <Content Include="Content\Images\compatible_safari.gif" />
+    <Content Include="Content\Images\glyphicons_016_bin.png" />
+    <Content Include="Content\Images\glyphicons_041_charts.png" />
+    <Content Include="Content\Images\glyphicons_051_eye_open.png" />
+    <Content Include="Content\Images\glyphicons_052_eye_close.png" />
+    <Content Include="Content\Images\glyphicons_173_play.png" />
+    <Content Include="Content\Images\glyphicons_174_pause.png" />
+    <Content Include="Content\Images\glyphicons_290_skull.png" />
+    <Content Include="Content\Images\loading-small.gif" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\questionmark.gif" />
+    <Content Include="Content\Images\skull.gif" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\bootstrap-applied.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\css\elmahr.css" />
+    <Content Include="Content\Themes\elmahr\bootstrap\js\bootstrap-collapse.js" />
+    <Content Include="Content\Themes\elmahr\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Themes\elmahr\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\ElmahR\elmahr.dashboard.js" />
+    <Content Include="Scripts\ElmahR\elmahr.stats.js" />
+    <Content Include="Scripts\jquery.timeago.js" />
+    <Content Include="Scripts\raphael.js" />
+    <Content Include="Scripts\respond.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ElmahR\dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Plugins\Piechart\app-extras.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Plugins\Piechart\css.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Plugins\Piechart\script.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
+

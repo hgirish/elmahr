@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://bitbucket.org/wasp/elmahr</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First release of ElmahR.Modules.Dashboard as an independent package</releaseNotes>
+    <copyright>Copyright 2012-13 Roberto Vespa</copyright>
+    <tags>ElmahR ELMAH SignalR dashboard error logging unhandled exception realtime</tags>
+    <dependencies>
+      <dependency id="jQuery.UI.Combined" version="1.10.0" />
+      <dependency id="knockoutjs" version="2.2.1" />
+      <dependency id="ElmahR.Core" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Content\App_Start\ElmahR.Modules.Dashboard.cs.pp" target="Content\App_Start\ElmahR.Modules.Dashboard.cs.pp" />
+    <file src="nuget_content\readme.txt" target="." />
+    <file src="nuget_content\readme.txt" target="App_Readme\ElmahR.Modules.Dashboard.txt" />
+    <file src="Scripts\jquery.timeago.js" target="Scripts\jquery.timeago.js" />
+    <file src="Scripts\respond.min.js" target="Scripts\respond.min.js" />
+    <file src="Scripts\ElmahR\elmahr.dashboard.js" target="Scripts\ElmahR\elmahr.dashboard.js" />
+    <file src="Scripts\ElmahR\elmahr.stats.js" target="Scripts\ElmahR\elmahr.stats.js" />
+    <file src="ElmahR\*.cshtml" target="ElmahR" />
+  </files>
+</package>

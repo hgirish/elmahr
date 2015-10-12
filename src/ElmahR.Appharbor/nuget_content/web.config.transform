@@ -1,0 +1,13 @@
+<configuration>
+  <elmahr>
+    <!--
+    Please refer to https://bitbucket.org/wasp/elmahr/wiki/Setup
+    for more details about how to configure this module.
+    -->
+  </elmahr>
+  <system.webServer>
+    <handlers>
+      <add name="BuildInfo" verb="POST" path="buildInfo.axd" type="ElmahR.Appharbor.Endpoint, ElmahR.Appharbor" />
+    </handlers>
+  </system.webServer>
+</configuration>

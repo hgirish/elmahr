@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://bitbucket.org/wasp/elmahr</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First releaase of an IoC module (for NInject)</releaseNotes>
+    <copyright>Copyright 2012-13 Roberto Vespa</copyright>
+    <tags>ElmahR ELMAH SignalR IoC NInject error logging unhandled exception</tags>  
+    <dependencies>
+      <dependency id="ElmahR.Core" />
+    </dependencies>    
+  </metadata>
+</package>
