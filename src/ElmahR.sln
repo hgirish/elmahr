@@ -1,19 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleSources", "SampleSources", "{66831098-B5F2-41BE-9215-4D4B270AC06F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{6638F076-8A02-4272-AA9E-70780E3B638E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR", "ElmahR\ElmahR.csproj", "{A4295E1D-D3D6-4A20-83C2-D57A3AE84F77}"
 	ProjectSection(ProjectDependencies) = postProject
 		{18680558-47E8-4F84-BA78-35A7B89C9E0C} = {18680558-47E8-4F84-BA78-35A7B89C9E0C}
-		{5699C0AD-53D3-489F-A942-9687D2DA702B} = {5699C0AD-53D3-489F-A942-9687D2DA702B}
-		{81B31DB2-9420-4B33-BA8C-7BD36C9A7303} = {81B31DB2-9420-4B33-BA8C-7BD36C9A7303}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Elmah", "ElmahR.Elmah\ElmahR.Elmah.csproj", "{18680558-47E8-4F84-BA78-35A7B89C9E0C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{81016AB4-60C7-4B2A-93B4-0C65301DB281}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Appharbor", "ElmahR.Appharbor\ElmahR.Appharbor.csproj", "{712D32E0-E3C7-42D9-BD52-000F890D93FF}"
 EndProject
@@ -25,28 +24,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.SampleSource.Dep", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.SampleSource.MVC", "ElmahR.SampleSource.MVC\ElmahR.SampleSource.MVC.csproj", "{2157C4E7-9399-4952-9A29-6D907BCAB2B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Persistence.RavenDB", "ElmahR.Persistence.RavenDB\ElmahR.Persistence.RavenDB.csproj", "{81B31DB2-9420-4B33-BA8C-7BD36C9A7303}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Persistence.MongoDB", "ElmahR.Persistence.MongoDB\ElmahR.Persistence.MongoDB.csproj", "{5699C0AD-53D3-489F-A942-9687D2DA702B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Modules.Dashboard", "ElmahR.Modules.Dashboard\ElmahR.Modules.Dashboard.csproj", "{E30451F2-BC59-469A-A405-0DB982C96A92}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleSources", "SampleSources", "{66831098-B5F2-41BE-9215-4D4B270AC06F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{6638F076-8A02-4272-AA9E-70780E3B638E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.IoC.NInject", "ElmahR.IoC.NInject\ElmahR.IoC.NInject.csproj", "{98075BCB-EF2A-4351-9F23-4FCB53E505F4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Persistence.EntityFramework.EF4", "ElmahR.Persistence.EntityFramework.EF4\ElmahR.Persistence.EntityFramework.EF4.csproj", "{2D675D3F-4E4B-45F4-AA3E-1C1BA0A0E644}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Persistence.EntityFramework.EF5.NET40", "ElmahR.Persistence.EntityFramework.EF5.NET40\ElmahR.Persistence.EntityFramework.EF5.NET40.csproj", "{A0AC1AF3-846C-4948-B877-FB32C3DAD1A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElmahR.Persistence.EntityFramework.EF5.NET45", "ElmahR.Persistence.EntityFramework.EF5.NET45\ElmahR.Persistence.EntityFramework.EF5.NET45.csproj", "{2628F78A-735B-4457-A5FA-AA6138047C23}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CORS", "http://localhost:12823", "{B1525210-C027-4479-9B8C-185CF31F3933}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_12823"
 		Debug.AspNetCompiler.PhysicalPath = "temp\CORS\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12823\"
@@ -99,14 +86,6 @@ Global
 		{2157C4E7-9399-4952-9A29-6D907BCAB2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2157C4E7-9399-4952-9A29-6D907BCAB2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2157C4E7-9399-4952-9A29-6D907BCAB2B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81B31DB2-9420-4B33-BA8C-7BD36C9A7303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81B31DB2-9420-4B33-BA8C-7BD36C9A7303}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81B31DB2-9420-4B33-BA8C-7BD36C9A7303}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81B31DB2-9420-4B33-BA8C-7BD36C9A7303}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5699C0AD-53D3-489F-A942-9687D2DA702B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5699C0AD-53D3-489F-A942-9687D2DA702B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5699C0AD-53D3-489F-A942-9687D2DA702B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5699C0AD-53D3-489F-A942-9687D2DA702B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E30451F2-BC59-469A-A405-0DB982C96A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E30451F2-BC59-469A-A405-0DB982C96A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E30451F2-BC59-469A-A405-0DB982C96A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -115,14 +94,6 @@ Global
 		{98075BCB-EF2A-4351-9F23-4FCB53E505F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98075BCB-EF2A-4351-9F23-4FCB53E505F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98075BCB-EF2A-4351-9F23-4FCB53E505F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D675D3F-4E4B-45F4-AA3E-1C1BA0A0E644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D675D3F-4E4B-45F4-AA3E-1C1BA0A0E644}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D675D3F-4E4B-45F4-AA3E-1C1BA0A0E644}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D675D3F-4E4B-45F4-AA3E-1C1BA0A0E644}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0AC1AF3-846C-4948-B877-FB32C3DAD1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0AC1AF3-846C-4948-B877-FB32C3DAD1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0AC1AF3-846C-4948-B877-FB32C3DAD1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0AC1AF3-846C-4948-B877-FB32C3DAD1A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2628F78A-735B-4457-A5FA-AA6138047C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2628F78A-735B-4457-A5FA-AA6138047C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2628F78A-735B-4457-A5FA-AA6138047C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,9 +108,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{712D32E0-E3C7-42D9-BD52-000F890D93FF} = {6638F076-8A02-4272-AA9E-70780E3B638E}
+		{3E4E58A0-13AC-424B-8F4C-28256695F411} = {66831098-B5F2-41BE-9215-4D4B270AC06F}
 		{43BC6F41-04AC-4C31-85E4-2F6C5CEFB998} = {66831098-B5F2-41BE-9215-4D4B270AC06F}
 		{2157C4E7-9399-4952-9A29-6D907BCAB2B2} = {66831098-B5F2-41BE-9215-4D4B270AC06F}
-		{3E4E58A0-13AC-424B-8F4C-28256695F411} = {66831098-B5F2-41BE-9215-4D4B270AC06F}
 	EndGlobalSection
 EndGlobal
-
