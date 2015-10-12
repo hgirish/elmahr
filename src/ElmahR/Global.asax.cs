@@ -1,4 +1,6 @@
-﻿using ElmahR;
+﻿using System.Web.Mvc;
+using System.Web.Routing;
+using ElmahR;
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Starter), "PreStart")]
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Starter), "PostStart")]
 
@@ -34,7 +36,9 @@ namespace ElmahR
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             ElmahR.Modules.Dashboard.Modules.Bootstrapper.Bootstrap();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

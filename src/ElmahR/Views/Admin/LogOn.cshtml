@@ -1,0 +1,15 @@
+﻿@model ElmahR.Models.CredentialsViewModel
+
+@{
+    ViewBag.Title = "LogOn";
+}
+
+<h2>LogOn</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.EditorForModel()
+    <button type="submit">Login</button>
+}
