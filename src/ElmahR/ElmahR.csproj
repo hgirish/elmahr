@@ -277,6 +277,7 @@
     <Content Include="Content\Themes\base\theme.css" />
     <Content Include="Content\Themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ElmahR\elmahr.dashboard.js" />
@@ -378,6 +379,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HashController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -437,6 +439,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <!--
   <PropertyGroup>
     <PostBuildEvent>
 if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
@@ -444,6 +447,7 @@ xcopy /s /y "E:\Dev\Projects\Packages\SqlServerCompact.4.0.8482.1\NativeBinaries
 if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
 xcopy /s /y "E:\Dev\Projects\Packages\SqlServerCompact.4.0.8482.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
   </PropertyGroup>
+  -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
