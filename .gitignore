@@ -1,3 +1,10 @@
+
+src/.vs
+appsettings.config
+*.pubxml
+applicationhost.config
+
+
 syntax: glob
 bin/**
 *.user
@@ -28,3 +35,4 @@ src/ElmahR/Scripts/ElmahR/.idea/**
 Content/**
 Scripts/**
 .hg_archival.txt
+

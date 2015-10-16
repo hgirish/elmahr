@@ -291,6 +291,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Web.config" />
+    <None Include="Properties\PublishProfiles\handselmahr - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\handselmahr - Web Deploy.pubxml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
