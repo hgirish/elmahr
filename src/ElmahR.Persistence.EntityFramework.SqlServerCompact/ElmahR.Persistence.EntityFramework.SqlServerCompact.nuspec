@@ -14,14 +14,14 @@
     <copyright>Copyright 2012-13 Roberto Vespa</copyright>
     <tags>ElmahR ELMAH SignalR error logging unhandled exception persistence EntityFramework SqlServerCompact</tags>  
     <dependencies>
-      <dependency id="EntityFramework.SqlServerCompact" />
-      <dependency id="Microsoft.SqlServer.Compact" />
+      <dependency id="EntityFramework.SqlServerCompact" version="6.1.3" />
+      <dependency id="Microsoft.SqlServer.Compact" version="4.0"/>
     </dependencies>
   </metadata>
   <files>
     <file src="nuget_content\web.config.transform" target="content" />
     <file src="nuget_content\readme.txt" target="." />
     <file src="nuget_content\readme.txt" target="App_Readme\ElmahR.Persistence.EntityFramework.SqlServerCompact.txt" />
-    <file src="nuget_content\ElmahR.sdf" target="Content\App_Data\ElmahR.sdf" />
+    <!-- <file src="nuget_content\ElmahR.sdf" target="Content\App_Data\ElmahR.sdf" /> -->
   </files>
 </package>
