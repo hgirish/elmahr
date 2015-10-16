@@ -291,8 +291,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Web.config" />
-    <None Include="Properties\PublishProfiles\handselmahr - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\handselmahr - Web Deploy.pubxml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -309,6 +307,8 @@
     <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="Properties\PublishProfiles\handselmahr - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\handselmahr - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -398,16 +398,6 @@
     <Content Include="ElmahR\dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ElmahR.Core\ElmahR.Core.csproj">
-      <Project>{369E787C-1764-4DC5-9CD4-07BCC2132020}</Project>
-      <Name>ElmahR.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ElmahR.Modules.Dashboard\ElmahR.Modules.Dashboard.csproj">
-      <Project>{e30451f2-bc59-469a-a405-0db982c96a92}</Project>
-      <Name>ElmahR.Modules.Dashboard</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Web.Dashboard.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -415,6 +405,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Plugins\Appharbor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElmahR.Core\ElmahR.Core.csproj">
+      <Project>{369e787c-1764-4dc5-9cd4-07bcc2132020}</Project>
+      <Name>ElmahR.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElmahR.Elmah\ElmahR.Elmah.csproj">
+      <Project>{18680558-47e8-4f84-ba78-35a7b89c9e0c}</Project>
+      <Name>ElmahR.Elmah</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElmahR.IoC.NInject\ElmahR.IoC.NInject.csproj">
+      <Project>{98075bcb-ef2a-4351-9f23-4fcb53e505f4}</Project>
+      <Name>ElmahR.IoC.NInject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElmahR.Modules.Dashboard\ElmahR.Modules.Dashboard.csproj">
+      <Project>{e30451f2-bc59-469a-a405-0db982c96a92}</Project>
+      <Name>ElmahR.Modules.Dashboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElmahR.Persistence.EntityFramework.EF5.NET45\ElmahR.Persistence.EntityFramework.EF5.NET45.csproj">
+      <Project>{2628f78a-735b-4457-a5fa-aa6138047c23}</Project>
+      <Name>ElmahR.Persistence.EntityFramework.EF5.NET45</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
