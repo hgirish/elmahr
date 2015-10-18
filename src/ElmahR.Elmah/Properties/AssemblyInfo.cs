@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 //      http://semver.org/
 //
 
-[assembly: AssemblyVersion("1.0.2.00000")]
-[assembly: AssemblyInformationalVersion("1.0.2")]
+[assembly: AssemblyVersion("1.0.2.10000")]
+[assembly: AssemblyInformationalVersion("1.0.2.1")]
